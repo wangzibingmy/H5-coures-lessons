@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas描边与填充（图案样式- 图片、Canvas画布等）</title>
+    <script type="text/javascript">
+        window.addEventListener('load', eventWindowLoaded, false);
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+        
+        function canvasApp() {
+            var theCanvas = document.getElementById('canvas');
+            var context = theCanvas.getContext('2d');
+            drawScreen();
+            function drawScreen(){
+                var offScreenCanvas = document.getElementById('canvasOffScreen');
+                var offScreenContext = offScreenCanvas.getContext('2d');
+                offScreenContext.fillStyle='pink';
+
+                offScreenContext.beginPath();
+                offScreenContext.arc(25, 15, 15, Math.PI / 180 * 0, Math.PI / 180 * 145, false);
+                offScreenContext.fill();
+                offScreenContext.closePath();
+
+                document.onclick=function(){
+                    var fillPattern = context.createPattern(offScreenCanvas,'repeat');
+                    context.fillStyle = fillPattern;
+                    context.fillRect(0,0,500,300);
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!--<div style="position: absolute; top: 50px; left: 50px;">-->
+    <div>
+        <canvas id="canvas" width="500" height="300" style="border:2px #ccc solid">
+            Your browser does not support the HTML 5 Canvas.
+        </canvas>   
+        <canvas id="canvasOffScreen" width="50" height="50" style="border:2px #ccc solid">
+            <!-- <canvas id="canvasOffScreen" width="50" height="50" style="border:2px #ccc solid;display:none"> -->
+            Your browser does not support the HTML 5 Canvas.
+        </canvas>
+    </div>
+</body>
+</html>

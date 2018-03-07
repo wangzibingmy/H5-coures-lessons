@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Canvas上合成图形</title>
+    <script>
+        window.addEventListener('load', eventWindowLoaded, false);
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+
+        function canvasApp() {
+            var theCanvas = document.getElementById('canvas');
+            var context = theCanvas.getContext('2d');
+            context.fillStyle = "pink"; //need list of available colors
+            context.fillRect(20,20, 200, 200);
+
+            context.fillStyle = "lightblue";
+            context.fillRect(1, 1, 50, 50);
+
+            //context.globalCompositeOperation="source-atop";//在目标图像顶部显示源图像。源图像位于目标图像之外的部分是不可见的
+            //context.globalCompositeOperation="source-in";//在目标图像中显示源图像，只有目标图像内的源图像部分会显示，目标图像是透明的
+            //context.globalCompositeOperation="source-out";//在目标图像之外显示源图像，只显示目标图像之外源图像的部分，目标图像是透明的
+            context.globalCompositeOperation="source-over"//默认：在目标图像上显示源图像（后添加的为源图像）
+            //context.globalCompositeOperation="destination-atop";//在源图像顶部显示目标图像，源图像之外的目标图像部分不会被显示
+            //context.globalCompositeOperation="destination-in";//在源图像中显示目标图像，只有源图像内的目标图像会被显示，源图像是透明的
+            //context.globalCompositeOperation="destination-out";//在源图像外显示目标图像，只有源图像外的目标图像部分会被显示，源图像是透明的
+            //context.globalCompositeOperation="destination-over";//在源图像上方显示目标图像
+            //lighter:显示源图像+目标图像
+            //copy:显示源图像，忽略目标图像
+            //xor:是用异或操作，对源图像与目标图像进行结合处理。
+            context.fillRect(50,50,200, 200);
+            context.globalAlpha = 0.8;
+        }
+    </script>
+</head>
+<body>
+    <!--<div style="position: absolute; top: 50px; left: 50px;">-->
+        <div>
+            <canvas id="canvas" width="500" height="500">
+                Your browser does not support the HTML 5 Canvas.
+            </canvas>
+        </div>
+</body>
+</html>

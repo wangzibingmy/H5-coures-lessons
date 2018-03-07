@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文本</title>
+    <script>
+        window.addEventListener('load', eventWindowLoaded, false);
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+
+        function canvasApp() {
+            var theCanvas = document.getElementById('canvas');
+            var context = theCanvas.getContext('2d');
+            context.font = "bold 60px Arial";
+            context.fillStyle = "lightblue";
+            context.strokeStyle='pink';
+            context.fillText('bing',0,50,160);
+            context.strokeText('bing',0,50);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <canvas id="canvas" width="500" height="300" style="border:2px #ccc solid">
+            Your browser does not support the HTML 5 Canvas.
+        </canvas>
+    </div>
+</body>
+</html>

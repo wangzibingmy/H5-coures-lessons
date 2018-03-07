@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.addEventListener('load', eventWindowLoaded, false);
+        function eventWindowLoaded() {
+            canvasApp();
+        }
+
+        function canvasApp() {
+            var theCanvas = document.getElementById('canvas');
+            var context = theCanvas.getContext('2d');
+            // context.font = "bold 80px Arial";
+            // context.font = "80px";
+            context.font='40px sans-serif';
+
+            context.fillStyle='pink';
+            context.strokeStyle='lightblue';
+
+            context.textAlign='center';
+            context.fillText('bing', 100, 50);
+            
+            context.textAlign='left';
+            context.fillText('bing', 100, 100);
+
+            context.textAlign='right';
+            context.fillText('bing', 100, 150); 
+
+            context.beginPath();
+            context.moveTo(100,0);
+            context.lineTo(100,200);
+            context.stroke();         
+        }
+    </script>
+</head>
+<body>
+        <canvas id="canvas" width="500" height="500" style="border:2px #ccc solid">
+          Your browser does not support the HTML 5 Canvas.
+        </canvas>
+</body>
+</html>
